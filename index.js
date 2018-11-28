@@ -54,6 +54,7 @@ io.on("connection", function(socket) {
   //update จอ wait-aray
   socket.on("xry", function() {
     io.emit("xry", "xry");
+    
   });
 });
 

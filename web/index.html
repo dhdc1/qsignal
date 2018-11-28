@@ -59,7 +59,7 @@
     ></script>
     <script>
       $(function() {
-        var socket = io('http://127.0.0.1:19009');
+        var socket = io('http://61.19.22.99:19009');
         $("form").submit(function(e) {
           e.preventDefault();
           socket.emit("chat", $("#m").val());
