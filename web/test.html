@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signal Test</title>
+  </head>
+  <body>
+    <button id="scn">scn</button> <button id="doc">doc</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function() {
+        var socket = io();
+
+        $("#scn").click(function(e) {
+          socket.emit("scn", "scn");
+        });
+
+        $("#doc").click(function(e) {
+          socket.emit("doc", "doc");
+        });
+        socket.on("scn", function(msg) {
+          console.log(msg);
+        });
+        socket.on("doc", function(msg) {
+          console.log(msg);
+        });
+      });
+    </script>
+  </body>
+</html>
