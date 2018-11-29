@@ -14,7 +14,7 @@
     ></script>
     <script>
       $(function() {
-        var socket = io('http://61.19.22.99:19009');
+        var socket = io();
 
         $("#scn").click(function(e) {
           socket.emit("scn", "scn");
@@ -23,6 +23,7 @@
         $("#doc").click(function(e) {
           socket.emit("doc", "doc");
         });
+        
         socket.on("scn", function(msg) {
           console.log(msg);
         });
