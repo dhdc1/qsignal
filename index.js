@@ -6,6 +6,8 @@ var cors = require("cors");
 
 var path = require("path");
 
+var port = process.env.PORT || 19009;
+
 app.use(cors());
 
 //app.use(express.static(path.join(__dirname, 'web')));
@@ -18,7 +20,7 @@ app.get("/test", function(req, res) {
   res.sendFile(__dirname + "/web/test.html");
 });
 
-var client = require("socket.io-client")("http://localhost:19009");
+var client = require("socket.io-client")(`http://localhost:${port}`);
 
 app.get("/scn", async (req, res) => {
   await client.emit("scn", "scn");
@@ -90,7 +92,7 @@ io.on("connection", function(socket) {
   });
 });
 
-var port = process.env.PORT || 19009;
+
 http.listen(port, function() {
   console.log("listening on *:" + port);
 });
