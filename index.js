@@ -22,34 +22,46 @@ app.get("/test", function(req, res) {
 
 var client = require("socket.io-client")(`http://localhost:${port}`);
 
-app.get("/scn", async (req, res) => {
+app.get("/scn/:q", async (req, res) => {
+  let q = req.params.q;
   await client.emit("scn", "scn");
+  await client.emit("blink",q);
   res.send("scn");
 });
 
-app.get("/doc", async (req, res) => {
+app.get("/doc/:q", async (req, res) => {
+  let q = req.params.q;
   await client.emit("doc", "doc");
-  res.send("doc");
+  await client.emit("blink",q);
+  res.send("doc",q);
 });
 
-app.get("/lab", async (req, res) => {
+app.get("/lab/:q", async (req, res) => {
+  let q = req.params.q;
   await client.emit("lab", "lab");
-  res.send("lab");
+  await client.emit("blink",q);
+  res.send("lab",q);
 });
 
-app.get("/xry", async (req, res) => {
+app.get("/xry/:q", async (req, res) => {
+  let q = req.params.q;
   await client.emit("xry", "xry");
-  res.send("xry");
+  await client.emit("blink",q);
+  res.send("xry",q);
 });
 
-app.get("/drg", async (req, res) => {
+app.get("/drg/:q", async (req, res) => {
+  let q = req.params.q;
   await client.emit("drg", "drg");
-  res.send("deg");
+  await client.emit("blink",q);
+  res.send("deg",q);
 });
 
-app.get("/fin", async (req, res) => {
+app.get("/fin/:q", async (req, res) => {
+  let q = req.params.q;
   await client.emit("fin", "fin");
-  res.send("fin");
+  await client.emit("blink",q);
+  res.send("fin",q);
 });
 
 
@@ -90,6 +102,11 @@ io.on("connection", function(socket) {
   socket.on("xry", function() {
     io.emit("xry", "xry msg");
   });
+
+  socket.on("blink",async function(q){
+    console.log(q)
+   await  io.emit("blink", q);
+  })
 });
 
 
