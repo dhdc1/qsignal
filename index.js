@@ -105,7 +105,9 @@ io.on("connection", function(socket) {
 
   //ส่งสัญญาณกระพริบระบุ Q
   socket.on("blink", function(q) {
-    console.log(q);
+    let date = new Date();
+    let d = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    console.log(`[${d}] =>`, q);
     io.emit("blink", q);
   });
 });
