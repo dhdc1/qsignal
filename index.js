@@ -90,41 +90,41 @@ io.on("connection", function(socket) {
   // end for test
 
   // update จอ wait-screen
-  socket.on("scn", function() {
-    io.emit("scn", "scn msg");
+  socket.on("scn", async function() {
+    await io.emit("scn", "scn msg");
   });
-  socket.on("doc", function() {
-    io.emit("doc", "doc msg");
+  socket.on("doc", async function() {
+    await io.emit("doc", "doc msg");
   });
 
   //update จอ wait-finance
-  socket.on("fin", function() {
-    io.emit("fin", "fin msg");
+  socket.on("fin", async function() {
+    await io.emit("fin", "fin msg");
   });
 
   //update จอ wait-drug
-  socket.on("drg", function() {
-    io.emit("drg", "drg msg");
+  socket.on("drg", async function() {
+    await io.emit("drg", "drg msg");
   });
 
   //update จอ wait-lab
-  socket.on("lab", function() {
-    io.emit("lab", "lab msg");
+  socket.on("lab", async function() {
+    await io.emit("lab", "lab msg");
   });
 
   //update จอ wait-aray
-  socket.on("xry", function() {
-    io.emit("xry", "xry msg");
+  socket.on("xry", async function() {
+    await io.emit("xry", "xry msg");
   });
 
   //update จอ wait-err
-  socket.on("err", function() {
-    io.emit("err", "err msg");
+  socket.on("err", async function() {
+    await io.emit("err", "err msg");
   });
 
   //update จอ wait-front-nurse
-  socket.on("fnt", function() {
-    io.emit("fnt", "fnt msg");
+  socket.on("fnt", async function() {
+    await io.emit("fnt", "fnt msg");
   });
 
   //ส่งสัญญาณกระพริบระบุ Queue
