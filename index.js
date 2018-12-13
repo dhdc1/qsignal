@@ -21,6 +21,7 @@ app.get("/test", function(req, res) {
 });
 
 var client = require("socket.io-client")(`http://localhost:${port}`);
+//client = {เครื่องเรียกคิว, broweser เรียกทดสอบ}
 
 app.get("/scn/:q", async (req, res) => {
   let q = req.params.q;
@@ -64,7 +65,7 @@ app.get("/fin/:q", async (req, res) => {
   res.send("fin", q);
 });
 
-// client section
+// {ฝั่ง server ส กระจายสัญญาณ}
 io.on("connection", function(socket) {
   // for test
   let ip = socket.handshake.address;
@@ -102,9 +103,10 @@ io.on("connection", function(socket) {
     io.emit("xry", "xry msg");
   });
 
-  socket.on("blink", async function(q) {
+  //ส่งสัญญาณกระพริบระบุ Q
+  socket.on("blink", function(q) {
     console.log(q);
-    await io.emit("blink", q);
+    io.emit("blink", q);
   });
 });
 

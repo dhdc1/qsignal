@@ -4,28 +4,35 @@
     <title>Signal Test</title>
     <style>
       table {
-        background: rebeccapurple;
-        display: table;
-        height: 100px;
-        table-layout: fixed;
-        width: 400px;
+        background: white;
+        display: table;       
+        table-layout: fixed;       
       }
 
       td {
-        background: hotpink;
+        background: rgb(184, 41, 89);
         display: table-cell;
         height: 100px;
-        width: 200px;
+        width: 400px;
+        font-weight: bolder;
+        font-size: 5em;
+        color: white
       }
     </style>
   </head>
   <body>
-    <table border="1">
+    <table >
       <tr>
-        <td align="center"><div id="A005">A005</div></td>
+        <td align="center"><div id="A001">A001</div></td>
       </tr>
       <tr>
-        <td align="center"><div id="A006">A006</div></td>
+        <td align="center"><div id="A002">A002</div></td>
+      </tr>
+      <tr>
+        <td align="center"><div id="A003">A003</div></td>
+      </tr>
+      <tr>
+        <td align="center"><div id="A004">A004</div></td>
       </tr>
     </table>
 
@@ -58,9 +65,9 @@
           console.log(q);
           blinkX(
             function() {
-              $(`#${q}`).fadeToggle();
+              $(`#${q}`).toggle();
             },
-            500,
+            600,
             20
           );
         });
