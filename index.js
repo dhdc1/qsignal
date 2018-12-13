@@ -72,6 +72,13 @@ app.get("/err/:q", async (req, res) => {
   res.send("err");
 });
 
+app.get("/fnt/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("fnt", "fnt");
+  await client.emit("blink", q);
+  res.send("fnt");
+});
+
 // {ฝั่ง server ส กระจายสัญญาณ}
 io.on("connection", function(socket) {
   // for test
@@ -113,6 +120,11 @@ io.on("connection", function(socket) {
   //update จอ wait-err
   socket.on("err", function() {
     io.emit("err", "err msg");
+  });
+
+  //update จอ wait-front-nurse
+  socket.on("fnt", function() {
+    io.emit("fnt", "fnt msg");
   });
 
   //ส่งสัญญาณกระพริบระบุ Queue
