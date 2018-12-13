@@ -65,6 +65,13 @@ app.get("/fin/:q", async (req, res) => {
   res.send("fin");
 });
 
+app.get("/err/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("err", "err");
+  await client.emit("blink", q);
+  res.send("err");
+});
+
 // {ฝั่ง server ส กระจายสัญญาณ}
 io.on("connection", function(socket) {
   // for test
@@ -103,7 +110,12 @@ io.on("connection", function(socket) {
     io.emit("xry", "xry msg");
   });
 
-  //ส่งสัญญาณกระพริบระบุ Q
+  //update จอ wait-err
+  socket.on("err", function() {
+    io.emit("err", "err msg");
+  });
+
+  //ส่งสัญญาณกระพริบระบุ Queue
   socket.on("blink", function(q) {
     let date = new Date();
     let d = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
