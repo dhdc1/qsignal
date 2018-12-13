@@ -128,11 +128,12 @@ io.on("connection", function(socket) {
   });
 
   //ส่งสัญญาณกระพริบระบุ Queue
-  socket.on("blink", function(q) {
-    let date = new Date();
-    let d = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-    console.log(`[${d}] blink => `, q);
-    io.emit("blink", q);
+  socket.on("blink", async function(q) {
+    //let date = new Date();
+    //let d = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    //console.log(`[${d}] blink => `, q);
+    //console.log(q)
+    await io.emit("blink", q);
   });
 });
 
