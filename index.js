@@ -64,6 +64,7 @@ app.get("/fin/:q", async (req, res) => {
   res.send("fin", q);
 });
 
+// client section
 io.on("connection", function(socket) {
   // for test
   let ip = socket.handshake.address;
