@@ -34,42 +34,42 @@ app.get("/doc/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("doc", "doc");
   await client.emit("blink", q);
-  res.send("doc", q);
+  res.send("doc");
 });
 
 app.get("/lab/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("lab", "lab");
   await client.emit("blink", q);
-  res.send("lab", q);
+  res.send("lab");
 });
 
 app.get("/xry/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("xry", "xry");
   await client.emit("blink", q);
-  res.send("xry", q);
+  res.send("xry");
 });
 
 app.get("/drg/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("drg", "drg");
   await client.emit("blink", q);
-  res.send("deg", q);
+  res.send("deg");
 });
 
 app.get("/fin/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("fin", "fin");
   await client.emit("blink", q);
-  res.send("fin", q);
+  res.send("fin");
 });
 
 // {ฝั่ง server ส กระจายสัญญาณ}
 io.on("connection", function(socket) {
   // for test
   let ip = socket.handshake.address;
-  console.log(ip, "connected...");
+  console.log(ip, " connected...");
   socket.on("chat", function(msg) {
     io.emit("chat", ip + " >> " + msg);
   });
