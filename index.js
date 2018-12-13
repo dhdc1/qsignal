@@ -25,46 +25,44 @@ var client = require("socket.io-client")(`http://localhost:${port}`);
 app.get("/scn/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("scn", "scn");
-  await client.emit("blink",q);
+  await client.emit("blink", q);
   res.send("scn");
 });
 
 app.get("/doc/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("doc", "doc");
-  await client.emit("blink",q);
-  res.send("doc",q);
+  await client.emit("blink", q);
+  res.send("doc", q);
 });
 
 app.get("/lab/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("lab", "lab");
-  await client.emit("blink",q);
-  res.send("lab",q);
+  await client.emit("blink", q);
+  res.send("lab", q);
 });
 
 app.get("/xry/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("xry", "xry");
-  await client.emit("blink",q);
-  res.send("xry",q);
+  await client.emit("blink", q);
+  res.send("xry", q);
 });
 
 app.get("/drg/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("drg", "drg");
-  await client.emit("blink",q);
-  res.send("deg",q);
+  await client.emit("blink", q);
+  res.send("deg", q);
 });
 
 app.get("/fin/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("fin", "fin");
-  await client.emit("blink",q);
-  res.send("fin",q);
+  await client.emit("blink", q);
+  res.send("fin", q);
 });
-
-
 
 io.on("connection", function(socket) {
   // for test
@@ -103,13 +101,13 @@ io.on("connection", function(socket) {
     io.emit("xry", "xry msg");
   });
 
-  socket.on("blink",async function(q){
-    console.log(q)
-   await  io.emit("blink", q);
-  })
+  socket.on("blink", async function(q) {
+    console.log(q);
+    await io.emit("blink", q);
+  });
 });
 
-
 http.listen(port, function() {
-  console.log("listening on *:" + port);
+  console.log("Power By SmartQueue (Utehn J.)");
+  console.log("Queue Signal On Port:" + port);
 });

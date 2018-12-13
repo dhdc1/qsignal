@@ -14,16 +14,18 @@
       td {
         background: hotpink;
         display: table-cell;
-        height: 8px;
+        height: 100px;
         width: 200px;
       }
     </style>
   </head>
   <body>
     <table border="1">
-      <tr heigth="100">
-        <td width="200" align="center"><div id="A005">A005</div></td>
-        <td width="200" align="center"><div id="A006">A006</div></td>
+      <tr>
+        <td align="center"><div id="A005">A005</div></td>
+      </tr>
+      <tr>
+        <td align="center"><div id="A006">A006</div></td>
       </tr>
     </table>
 
@@ -46,7 +48,7 @@
       }
 
       $(function() {
-        var socket = io("http://61.19.22.99:19009");
+        var socket = io();
 
         socket.on("scn", function(msg) {
           console.log(msg);
@@ -56,7 +58,7 @@
           console.log(q);
           blinkX(
             function() {
-              $(`#${q}`).toggle();
+              $(`#${q}`).fadeToggle();
             },
             500,
             20
