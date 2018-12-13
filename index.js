@@ -119,7 +119,7 @@ io.on("connection", function(socket) {
   socket.on("blink", function(q) {
     let date = new Date();
     let d = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-    console.log(`[${d}]`, q);
+    console.log(`[${d}] blink => `, q);
     io.emit("blink", q);
   });
 });
