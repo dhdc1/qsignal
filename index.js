@@ -21,7 +21,7 @@ app.get("/test", function(req, res) {
 });
 
 var client = require("socket.io-client")(`http://localhost:${port}`);
-//client = {เครื่องเรียกคิว, broweser เรียกทดสอบ}
+//client = {เครื่องเรียกคิว, broweser เรียกทดสอบ ที่ส่งสัญญาณมาที่ server}
 
 app.get("/scn/:q", async (req, res) => {
   let q = req.params.q;
