@@ -133,7 +133,9 @@ io.on("connection", function(socket) {
     //let d = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
     //console.log(`[${d}] blink => `, q);
     //console.log(q)
-    await io.emit("blink", q);
+    if (q != "s99999") {
+      await io.emit("blink", q);
+    }
   });
 });
 
@@ -147,7 +149,7 @@ let timmerPage = setInterval(() => {
   }
   console.log("page = ", page);
   io.emit("page", page);
-}, 1000 * 10);
+}, 1000 * 15);
 
 // จบ timmer ส่ง สลับ page
 
