@@ -149,7 +149,7 @@ let timmerPage = setInterval(() => {
   }
   console.log("page = ", page);
   io.emit("page", page);
-}, 1000 * 15);
+}, 1000 * 10);
 
 // จบ timmer ส่ง สลับ page
 
