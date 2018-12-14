@@ -139,7 +139,7 @@ io.on("connection", function(socket) {
 
 // timmer ส่งสลับ page
 let page = 1;
-setInterval(() => {
+let timmerPage = setInterval(() => {
   if (page == 1) {
     page = 2;
   } else {
