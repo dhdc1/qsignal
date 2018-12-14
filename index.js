@@ -137,6 +137,20 @@ io.on("connection", function(socket) {
   });
 });
 
+// timmer ส่งสลับ page
+let page = 1;
+setInterval(() => {
+  if (page == 1) {
+    page = 2;
+  } else {
+    page = 1;
+  }
+  console.log("page = ", page);
+  io.emit("page", page);
+}, 1000 * 10);
+
+// จบ timmer ส่ง สลับ page
+
 http.listen(port, function() {
   console.log("Power By SmartQueue (Utehn J.)");
   console.log("Queue Signal On Port:" + port);
