@@ -3,36 +3,47 @@
   <head>
     <title>Signal Test</title>
     <style>
-      table {
+      html,
+      body {
+        height: 99.5vh;
+        width: 99.5vw;
+        margin: 1px;
+      }
+
+      table.wait {
         background: white;
         display: table;
         table-layout: fixed;
       }
 
-      td {
+      table.wait td {
         background: rgb(184, 41, 89);
         display: table-cell;
-        height: 100px;
-        width: 400px;
+        height: 130px;
+        width: 250px;
         font-weight: bolder;
-        font-size: 5em;
+        font-size: 7em;
         color: white;
+        padding: 15px
       }
     </style>
   </head>
   <body>
-    <table>
+    <table class="wait">
       <tr>
         <td align="center"><div id="A001">A001</div></td>
-      </tr>
-      <tr>
         <td align="center"><div id="A002">A002</div></td>
-      </tr>
-      <tr>
         <td align="center"><div id="A003">A003</div></td>
+        <td align="center"><div id="A004">A004</div></td>
       </tr>
       <tr>
-        <td align="center"><div id="A004">A004</div></td>
+        <td align="center"><div id="A005">A005</div></td>
+      </tr>
+      <tr>
+        <td align="center"><div id="A006">A006</div></td>
+      </tr>
+      <tr>
+        <td align="center"><div id="A007">A007</div></td>
       </tr>
     </table>
 
@@ -72,9 +83,9 @@
           );
         });
 
-        socket.on('page',function(page){
-          console.log('page',page);
-        })
+        socket.on("page", function(page) {
+          console.log("page", page);
+        });
       });
     </script>
   </body>
