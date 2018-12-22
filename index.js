@@ -115,106 +115,94 @@ io.on("connection", function(socket) {
   // update จอ wait-screen
   socket.on("scn1", async function(q) {
     console.log(`scn from ${ip}`, q);
-    await io.emit("scn1", "scn msg");
+    await io.emit("scn1", q);
     await io.emit("blink", q);
   });
 
   socket.on("scn2", async function(q) {
     console.log(`scn from ${ip}`, q);
-    await io.emit("scn2", "scn msg");
+    await io.emit("scn2", q);
     await io.emit("blink", q);
   });
   socket.on("scn3", async function(q) {
     console.log(`scn from ${ip}`, q);
-    await io.emit("scn3", "scn msg");
+    await io.emit("scn3", q);
     await io.emit("blink", q);
   });
   socket.on("scn4", async function(q) {
     console.log(`scn from ${ip}`, q);
-    await io.emit("scn4", "scn msg");
+    await io.emit("scn4", q);
     await io.emit("blink", q);
   });
 
   socket.on("doc1", async function(q) {
     console.log(`doc from ${ip}`, q);
-    await io.emit("doc1", "doc msg");
+    await io.emit("doc1", q);
     await io.emit("blink-doc", q);
   });
 
   socket.on("doc2", async function(q) {
     console.log(`doc from ${ip}`, q);
-    await io.emit("doc2", "doc msg");
+    await io.emit("doc2", q);
     await io.emit("blink-doc", q);
   });
 
   socket.on("doc3", async function(q) {
     console.log(`doc from ${ip}`, q);
-    await io.emit("doc3", "doc msg");
-    await io.emit("blink-doc", q);
+    await io.emit("doc3", q);
+    await io.emit("blink", q);
   });
 
   socket.on("doc4", async function(q) {
     console.log(`doc from ${ip}`, q);
-    await io.emit("doc4", "doc msg");
-    await io.emit("blink-doc", q);
+    await io.emit("doc4", q);
+    await io.emit("blink", q);
   });
 
   //update จอ wait-finance
   socket.on("fin", async function(q) {
     console.log(`fin from ${ip}`, q);
-    await io.emit("fin", "fin msg");
+    await io.emit("fin", q);
     await io.emit("blink", q);
   });
 
   //update จอ wait-drug
   socket.on("drg", async function(q) {
     console.log(`drg from ${ip}`, q);
-    await io.emit("drg", "drg msg");
+    await io.emit("drg", q);
     await io.emit("blink", q);
   });
 
   //update จอ wait-lab
   socket.on("lab", async function(q) {
     console.log(`lab from ${ip}`, q);
-    await io.emit("lab", "lab msg");
+    await io.emit("lab", q);
     await io.emit("blink", q);
   });
 
   //update จอ wait-aray
   socket.on("xry", async function(q) {
     console.log(`xry from ${ip}`, q);
-    await io.emit("xry", "xry msg");
+    await io.emit("xry", q);
     await io.emit("blink", q);
   });
 
   //update จอ wait-err
   socket.on("err", async function(q) {
     console.log(`err from ${ip}`, q);
-    await io.emit("err", "err msg");
+    await io.emit("err", q);
     await io.emit("blink", q);
   });
 
   //update จอ wait-front-nurse
   socket.on("fnt", async function(q) {
     console.log(`fnt from ${ip}`, q);
-    await io.emit("fnt", "fnt msg");
+    await io.emit("fnt", q);
     await io.emit("blink", q);
   });
 });
 
-// timmer ส่งสลับ page
-let page = 1;
-/*let timmerPage = setInterval(() => {
-  if (page == 1) {
-    page = 2;
-  } else {
-    page = 1;
-  }
-  console.log("page = ", page);
-  io.emit("page", page);
-}, 1000 * 10);*/
 
-// จบ timmer ส่ง สลับ page
 
 http.listen(port, function() {
   console.log("Power By SmartQueue (Utehn J.)");
