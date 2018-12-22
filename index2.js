@@ -24,36 +24,6 @@ app.get("/rx1/:q", async (req, res) => {
 
 // {ฝั่ง server กระจายสัญญาณ}
 io.on("connection", function(socket) {
-  //rx 1 - 9
-  socket.on("rx1", async function(q) {
-    await io.emit("rx1", q);
-  });
-  socket.on("rx2", async function(q) {
-    await io.emit("rx2", q);
-  });
-  socket.on("rx3", async function(q) {
-    await io.emit("rx3", q);
-  });
-  socket.on("rx4", async function(q) {
-    await io.emit("rx4", q);
-  });
-  socket.on("rx5", async function(q) {
-    await io.emit("rx5", q);
-  });
-  socket.on("rx6", async function(q) {
-    await io.emit("rx6", q);
-  });
-  socket.on("rx7", async function(q) {
-    await io.emit("rx7", q);
-  });
-  socket.on("rx8", async function(q) {
-    await io.emit("rx8", q);
-  });
-  socket.on("rx9", async function(q) {
-    await io.emit("rx9", q);
-  });
-  // end rx
-
   //screen 1-5
   socket.on("sc1", async function(q) {
     await io.emit("sc1", q);
@@ -101,6 +71,36 @@ io.on("connection", function(socket) {
     await io.emit("dx9", q);
   });
   //end dx 1-9
+
+  //rx 1 - 9
+  socket.on("rx1", async function(q) {
+    await io.emit("rx1", q);
+  });
+  socket.on("rx2", async function(q) {
+    await io.emit("rx2", q);
+  });
+  socket.on("rx3", async function(q) {
+    await io.emit("rx3", q);
+  });
+  socket.on("rx4", async function(q) {
+    await io.emit("rx4", q);
+  });
+  socket.on("rx5", async function(q) {
+    await io.emit("rx5", q);
+  });
+  socket.on("rx6", async function(q) {
+    await io.emit("rx6", q);
+  });
+  socket.on("rx7", async function(q) {
+    await io.emit("rx7", q);
+  });
+  socket.on("rx8", async function(q) {
+    await io.emit("rx8", q);
+  });
+  socket.on("rx9", async function(q) {
+    await io.emit("rx9", q);
+  });
+  // end rx
 });
 
 http.listen(port, function() {
