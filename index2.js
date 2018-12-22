@@ -13,20 +13,17 @@ app.use(cors());
 var client = require("socket.io-client")(`http://localhost:${port}`);
 //client = {เครื่องเรียกคิว, broweser เรียกทดสอบ ที่ส่งสัญญาณมาที่ server}
 
-app.get("/rxx/room1/:q", async (req, res) => {
+app.get("/rx/ch1/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("rxx", q);
-  res.send("rxx");
+  await client.emit("rx-ch1", q);
+  res.send(`rx ch1 ${q}`);
 });
 
 // {ฝั่ง server กระจายสัญญาณ}
 io.on("connection", function(socket) {
-  let ip = socket.handshake.address;
-  console.log(ip, "connected");
-  socket.on("rxx", async function(q) {
-    console.log(`rxx from ${ip}`, q);
-    await io.emit("rxx", q);
-    await io.emit("blink", q);
+  socket.on("rx-ch1", async function(q) {
+    await io.emit("rx-ch1", q);
+    await io.emit("blink", 'rx-ch1-call');
   });
 });
 
