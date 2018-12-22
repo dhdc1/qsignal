@@ -16,11 +16,142 @@ app.get("/", function(req, res) {
 var client = require("socket.io-client")(`http://localhost:${port}`);
 //client = {เครื่องเรียกคิว, broweser เรียกทดสอบ ที่ส่งสัญญาณมาที่ server}
 
+// screen
+app.get("/sc1/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("sc1", q);
+  res.send(`sc1 ${q}`);
+});
+
+app.get("/sc2/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("sc2", q);
+  res.send(`sc2 ${q}`);
+});
+app.get("/sc3/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("sc3", q);
+  res.send(`sc3 ${q}`);
+});
+app.get("/sc4/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("sc4", q);
+  res.send(`sc4 ${q}`);
+});
+app.get("/sc5/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("sc5", q);
+  res.send(`sc5 ${q}`);
+});
+// end screen
+
+//dx
+app.get("/dx1/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx1", q);
+  res.send(`dx1 ${q}`);
+});
+app.get("/dx2/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx2", q);
+  res.send(`dx2 ${q}`);
+});
+app.get("/dx3/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx3", q);
+  res.send(`dx3 ${q}`);
+});
+app.get("/dx4/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx4", q);
+  res.send(`dx4 ${q}`);
+});
+app.get("/dx5/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx5", q);
+  res.send(`dx5 ${q}`);
+});
+app.get("/dx6/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx6", q);
+  res.send(`dx6 ${q}`);
+});
+app.get("/dx7/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx7", q);
+  res.send(`dx7 ${q}`);
+});
+app.get("/dx8/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx8", q);
+  res.send(`dx8 ${q}`);
+});
+app.get("/dx9/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx9", q);
+  res.send(`dx9 ${q}`);
+});
+app.get("/dx10/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx10", q);
+  res.send(`dx10 ${q}`);
+});
+
+//end dx
+
+//rx1-10
+//rx
 app.get("/rx1/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("rx1", q);
   res.send(`rx1 ${q}`);
 });
+app.get("/rx2/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("rx2", q);
+  res.send(`rx2 ${q}`);
+});
+app.get("/rx3/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("rx3", q);
+  res.send(`rx3 ${q}`);
+});
+app.get("/rx4/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("rx4", q);
+  res.send(`rx4 ${q}`);
+});
+app.get("/rx5/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("rx5", q);
+  res.send(`rx5 ${q}`);
+});
+app.get("/rx6/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("rx6", q);
+  res.send(`rx6 ${q}`);
+});
+app.get("/rx7/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("rx7", q);
+  res.send(`rx7 ${q}`);
+});
+app.get("/rx8/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("rx8", q);
+  res.send(`rx8 ${q}`);
+});
+app.get("/rx9/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("rx9", q);
+  res.send(`rx9 ${q}`);
+});
+app.get("/rx10/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("rx10", q);
+  res.send(`rx10 ${q}`);
+});
+//end rx
 
 // {ฝั่ง server กระจายสัญญาณ}
 io.on("connection", function(socket) {
@@ -42,7 +173,7 @@ io.on("connection", function(socket) {
   });
   // end screen
 
-  //dx 1 - 9
+  //dx 1 - 10
   socket.on("dx1", async function(q) {
     await io.emit("dx1", q);
   });
@@ -70,9 +201,12 @@ io.on("connection", function(socket) {
   socket.on("dx9", async function(q) {
     await io.emit("dx9", q);
   });
-  //end dx 1-9
+  socket.on("dx10", async function(q) {
+    await io.emit("dx10", q);
+  });
+  //end dx
 
-  //rx 1 - 9
+  //rx 1 - 10
   socket.on("rx1", async function(q) {
     await io.emit("rx1", q);
   });
@@ -99,6 +233,9 @@ io.on("connection", function(socket) {
   });
   socket.on("rx9", async function(q) {
     await io.emit("rx9", q);
+  });
+  socket.on("rx10", async function(q) {
+    await io.emit("rx10", q);
   });
   // end rx
 });
