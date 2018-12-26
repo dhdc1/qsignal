@@ -9,200 +9,236 @@ var path = require("path");
 var port = process.env.PORT || 19009;
 
 app.use(cors());
-
-//app.use(express.static(path.join(__dirname, 'web')));
-
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/web/index.html");
-});
-
-app.get("/test", function(req, res) {
-  res.sendFile(__dirname + "/web/test.html");
 });
 
 var client = require("socket.io-client")(`http://localhost:${port}`);
 //client = {เครื่องเรียกคิว, broweser เรียกทดสอบ ที่ส่งสัญญาณมาที่ server}
 
-app.get("/scn1/:q", async (req, res) => {
+// screen
+app.get("/sc1/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("scn1", q);
-  res.send("scn1");
+  await client.emit("sc1", q);
+  res.send(`sc1 ${q}`);
 });
 
-app.get("/scn2/:q", async (req, res) => {
+app.get("/sc2/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("scn2", q);
-  res.send("scn2");
+  await client.emit("sc2", q);
+  res.send(`sc2 ${q}`);
 });
-app.get("/scn3/:q", async (req, res) => {
+app.get("/sc3/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("scn3", q);
-  res.send("scn3");
+  await client.emit("sc3", q);
+  res.send(`sc3 ${q}`);
 });
-app.get("/scn4/:q", async (req, res) => {
+app.get("/sc4/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("scn4", q);
-  res.send("scn4");
+  await client.emit("sc4", q);
+  res.send(`sc4 ${q}`);
+});
+app.get("/sc5/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("sc5", q);
+  res.send(`sc5 ${q}`);
+});
+// end screen
+
+//dx
+app.get("/dx1/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx1", q);
+  res.send(`dx1 ${q}`);
+});
+app.get("/dx2/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx2", q);
+  res.send(`dx2 ${q}`);
+});
+app.get("/dx3/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx3", q);
+  res.send(`dx3 ${q}`);
+});
+app.get("/dx4/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx4", q);
+  res.send(`dx4 ${q}`);
+});
+app.get("/dx5/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx5", q);
+  res.send(`dx5 ${q}`);
+});
+app.get("/dx6/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx6", q);
+  res.send(`dx6 ${q}`);
+});
+app.get("/dx7/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx7", q);
+  res.send(`dx7 ${q}`);
+});
+app.get("/dx8/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx8", q);
+  res.send(`dx8 ${q}`);
+});
+app.get("/dx9/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx9", q);
+  res.send(`dx9 ${q}`);
+});
+app.get("/dx10/:q", async (req, res) => {
+  let q = req.params.q;
+  await client.emit("dx10", q);
+  res.send(`dx10 ${q}`);
 });
 
-app.get("/doc1/:q", async (req, res) => {
+//end dx
+
+//rx1-10
+//rx
+app.get("/rx1/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("doc1", q);
-  res.send("doc1");
+  await client.emit("rx1", q);
+  res.send(`rx1 ${q}`);
 });
-
-app.get("/doc2/:q", async (req, res) => {
+app.get("/rx2/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("doc2", q);
-  res.send("doc2");
+  await client.emit("rx2", q);
+  res.send(`rx2 ${q}`);
 });
-
-app.get("/doc3/:q", async (req, res) => {
+app.get("/rx3/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("doc3", q);
-  res.send("doc3");
+  await client.emit("rx3", q);
+  res.send(`rx3 ${q}`);
 });
-
-app.get("/doc4/:q", async (req, res) => {
+app.get("/rx4/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("doc4", q);
-  res.send("doc4");
+  await client.emit("rx4", q);
+  res.send(`rx4 ${q}`);
 });
-
-
-
-app.get("/lab/:q", async (req, res) => {
+app.get("/rx5/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("lab", q);
-  res.send("lab");
+  await client.emit("rx5", q);
+  res.send(`rx5 ${q}`);
 });
-
-app.get("/xry/:q", async (req, res) => {
+app.get("/rx6/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("xry", q);
-  res.send("xry");
+  await client.emit("rx6", q);
+  res.send(`rx6 ${q}`);
 });
-
-app.get("/drg/:q", async (req, res) => {
+app.get("/rx7/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("drg", q);
-  res.send("deg");
+  await client.emit("rx7", q);
+  res.send(`rx7 ${q}`);
 });
-
-app.get("/fin/:q", async (req, res) => {
+app.get("/rx8/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("fin", q);
-  res.send("fin");
+  await client.emit("rx8", q);
+  res.send(`rx8 ${q}`);
 });
-
-app.get("/err/:q", async (req, res) => {
+app.get("/rx9/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("err", q);
-  res.send("err");
+  await client.emit("rx9", q);
+  res.send(`rx9 ${q}`);
 });
-
-app.get("/fnt/:q", async (req, res) => {
+app.get("/rx10/:q", async (req, res) => {
   let q = req.params.q;
-  await client.emit("fnt", q);
-  res.send("fnt");
+  await client.emit("rx10", q);
+  res.send(`rx10 ${q}`);
 });
+//end rx
 
 // {ฝั่ง server กระจายสัญญาณ}
 io.on("connection", function(socket) {
-  let ip = socket.handshake.address;
-  console.log(ip, "connected");
+  //screen 1-5
+  socket.on("sc1", async function(q) {
+    await io.emit("sc1", q);
+  });
+  socket.on("sc2", async function(q) {
+    await io.emit("sc2", q);
+  });
+  socket.on("sc3", async function(q) {
+    await io.emit("sc3", q);
+  });
+  socket.on("sc4", async function(q) {
+    await io.emit("sc4", q);
+  });
+  socket.on("sc5", async function(q) {
+    await io.emit("sc5", q);
+  });
+  // end screen
 
-  // update จอ wait-screen
-  socket.on("scn1", async function(q) {
-    console.log(`scn from ${ip}`, q);
-    await io.emit("scn1", q);
-    await io.emit("blink", q);
+  //dx 1 - 10
+  socket.on("dx1", async function(q) {
+    await io.emit("dx1", q);
   });
+  socket.on("dx2", async function(q) {
+    await io.emit("dx2", q);
+  });
+  socket.on("dx3", async function(q) {
+    await io.emit("dx3", q);
+  });
+  socket.on("dx4", async function(q) {
+    await io.emit("dx4", q);
+  });
+  socket.on("dx5", async function(q) {
+    await io.emit("dx5", q);
+  });
+  socket.on("dx6", async function(q) {
+    await io.emit("dx6", q);
+  });
+  socket.on("dx7", async function(q) {
+    await io.emit("rx7", q);
+  });
+  socket.on("dx8", async function(q) {
+    await io.emit("dx8", q);
+  });
+  socket.on("dx9", async function(q) {
+    await io.emit("dx9", q);
+  });
+  socket.on("dx10", async function(q) {
+    await io.emit("dx10", q);
+  });
+  //end dx
 
-  socket.on("scn2", async function(q) {
-    console.log(`scn from ${ip}`, q);
-    await io.emit("scn2", q);
-    await io.emit("blink", q);
+  //rx 1 - 10
+  socket.on("rx1", async function(q) {
+    await io.emit("rx1", q);
   });
-  socket.on("scn3", async function(q) {
-    console.log(`scn from ${ip}`, q);
-    await io.emit("scn3", q);
-    await io.emit("blink", q);
+  socket.on("rx2", async function(q) {
+    await io.emit("rx2", q);
   });
-  socket.on("scn4", async function(q) {
-    console.log(`scn from ${ip}`, q);
-    await io.emit("scn4", q);
-    await io.emit("blink", q);
+  socket.on("rx3", async function(q) {
+    await io.emit("rx3", q);
   });
-
-  socket.on("doc1", async function(q) {
-    console.log(`doc from ${ip}`, q);
-    await io.emit("doc1", q);
-    await io.emit("blink-doc", q);
+  socket.on("rx4", async function(q) {
+    await io.emit("rx4", q);
   });
-
-  socket.on("doc2", async function(q) {
-    console.log(`doc from ${ip}`, q);
-    await io.emit("doc2", q);
-    await io.emit("blink-doc", q);
+  socket.on("rx5", async function(q) {
+    await io.emit("rx5", q);
   });
-
-  socket.on("doc3", async function(q) {
-    console.log(`doc from ${ip}`, q);
-    await io.emit("doc3", q);
-    await io.emit("blink", q);
+  socket.on("rx6", async function(q) {
+    await io.emit("rx6", q);
   });
-
-  socket.on("doc4", async function(q) {
-    console.log(`doc from ${ip}`, q);
-    await io.emit("doc4", q);
-    await io.emit("blink", q);
+  socket.on("rx7", async function(q) {
+    await io.emit("rx7", q);
   });
-
-  //update จอ wait-finance
-  socket.on("fin", async function(q) {
-    console.log(`fin from ${ip}`, q);
-    await io.emit("fin", q);
-    await io.emit("blink", q);
+  socket.on("rx8", async function(q) {
+    await io.emit("rx8", q);
   });
-
-  //update จอ wait-drug
-  socket.on("drg", async function(q) {
-    console.log(`drg from ${ip}`, q);
-    await io.emit("drg", q);
-    await io.emit("blink", q);
+  socket.on("rx9", async function(q) {
+    await io.emit("rx9", q);
   });
-
-  //update จอ wait-lab
-  socket.on("lab", async function(q) {
-    console.log(`lab from ${ip}`, q);
-    await io.emit("lab", q);
-    await io.emit("blink", q);
+  socket.on("rx10", async function(q) {
+    await io.emit("rx10", q);
   });
-
-  //update จอ wait-aray
-  socket.on("xry", async function(q) {
-    console.log(`xry from ${ip}`, q);
-    await io.emit("xry", q);
-    await io.emit("blink", q);
-  });
-
-  //update จอ wait-err
-  socket.on("err", async function(q) {
-    console.log(`err from ${ip}`, q);
-    await io.emit("err", q);
-    await io.emit("blink", q);
-  });
-
-  //update จอ wait-front-nurse
-  socket.on("fnt", async function(q) {
-    console.log(`fnt from ${ip}`, q);
-    await io.emit("fnt", q);
-    await io.emit("blink", q);
-  });
+  // end rx
 });
-
-
 
 http.listen(port, function() {
   console.log("Power By SmartQueue (Utehn J.)");
