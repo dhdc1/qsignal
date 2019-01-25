@@ -14,7 +14,7 @@ app.get("/", function(req, res) {
 });
 
 var client = require("socket.io-client")(`http://localhost:${port}`);
-//client = {เครื่องเรียกคิว, broweser เรียกทดสอบ ที่ส่งสัญญาณมาที่ server}
+//client = {เครื่องเรียกคิว, broweser เรียกทดสอบส่งสัญญาณมาที่ server}
 
 // screen
 app.get("/sc1/:q", async (req, res) => {
@@ -101,6 +101,14 @@ app.get("/dx10/:q", async (req, res) => {
 
 //rx1-10
 //rx
+
+app.get("/rx/:ch/:q", async (req, res) => {
+  let ch = req.params.ch;
+  let q = req.params.q;
+  await client.emit(`rx${ch}`, q);
+  res.send(`rx${ch} ${q}`);
+});
+
 app.get("/rx1/:q", async (req, res) => {
   let q = req.params.q;
   await client.emit("rx1", q);
