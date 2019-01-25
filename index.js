@@ -8,6 +8,24 @@ var path = require("path");
 
 var port = process.env.PORT || 19009;
 
+var knex = require("knex")({
+  client: "mysql",
+  connection: {
+    host: "localhost",
+    port: 3306,
+    user: "root",
+    password: "1234",
+    database: "hos"
+  },
+  pool: {
+    afterCreate: (conn, done) => {
+      conn.query("SET NAMES UTF8", err => {
+        done(err, conn);
+      });
+    }
+  }
+});
+
 app.use(cors());
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/web/index.html");
@@ -102,9 +120,11 @@ app.get("/dx10/:q", async (req, res) => {
 //rx1-10
 //rx
 
-app.get("/rx/:ch/:q", async (req, res) => {
-  let ch = req.params.ch;
+app.get("/rx/:q", async (req, res) => {
   let q = req.params.q;
+  let sql = "select 2 as 'ch'";
+  let raw = await knex.raw(sql,[q]);
+  let ch = raw[0];
   await client.emit(`rx${ch}`, q);
   res.send(`rx${ch} ${q}`);
 });
