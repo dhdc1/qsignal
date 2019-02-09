@@ -11,10 +11,10 @@ var port = process.env.PORT || 19009;
 var knex = require("knex")({
   client: "mysql",
   connection: {
-    host: "192.168.100.1",
+    host: "203.157.118.123",
     port: 3306,
-    user: "root",
-    password: "thunderline",
+    user: "sa",
+    password: "qazwsxedcr112233",
     database: "hos"
   },
   pool: {
@@ -123,11 +123,16 @@ app.get("/dx10/:q", async (req, res) => {
 app.get("/rx/:q", async (req, res) => {
   let q = req.params.q;
   let sql =
-    "SELECT stationno as ch FROM `ovst_queue_server_dep` where dep_visit = 'drug' and date_visit = CURDATE() and depq = ? limit 1";
-  let data = await knex.raw(sql, [q]);
-  let ch = data[0][0].ch;
-  await client.emit(`rx${ch}`, q);
-  res.send(`rx${ch} ${q}`);
+    "SELECT stationno as ch FROM `ovst_queue_server_dep` where dep_visit = 'drug' and date_visit = CURDATE()  and depq = ? limit 1";
+
+  try {
+    let data = await knex.raw(sql, [q]);
+    let ch = data[0][0].ch;
+    await client.emit(`rx${ch}`, q);
+    res.send(`rx${ch} ${q}`);
+  } catch (error) {
+    res.send({'error':error});
+  }
 });
 
 app.get("/rx1/:q", async (req, res) => {
